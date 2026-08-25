@@ -1,23 +1,18 @@
 import 'package:flutter/material.dart';
+import 'Screens/SerachScreen.dart';
 
 void main(){
-  runApp(const test());
+  runApp(const ServiceWala());
 }
 
-class test extends StatelessWidget{
-    const test({super.key});
-    @override
+class ServiceWala extends StatelessWidget{
+  const ServiceWala({super.key});
+  @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-    home: Scaffold(
-        body: Center(
+      return MaterialApp(
+        title: "servicewalah",
+         home: SearchScreen(),
         
-          child: OutlinedButton(onPressed: hey, child: Text("press me")),
-        ),
-    ),
-    );
-  }
-  void hey(){
-    print("button is clicked");
+      );
   }
 }

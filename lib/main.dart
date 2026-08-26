@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:servicewala/Screens/HomeScreen.dart';
 import 'Screens/SerachScreen.dart';
 
 void main(){
@@ -11,7 +12,7 @@ class ServiceWala extends StatelessWidget{
   Widget build(BuildContext context) {
       return MaterialApp(
         title: "servicewalah",
-         home: SearchScreen(),
+         home: Homescreen(),
         
       );
   }

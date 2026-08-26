@@ -29,7 +29,7 @@ class _SearchScreenState extends State<SearchScreen> {
               color: Colors.black,
               width: 10,
               height: 10,
-              margin: EdgeInsets.only(left: ),
+              margin: EdgeInsets.only(left: 10),
             )
           )
         ],

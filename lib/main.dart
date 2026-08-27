@@ -12,7 +12,8 @@ class ServiceWala extends StatelessWidget{
   Widget build(BuildContext context) {
       return MaterialApp(
         title: "servicewalah",
-         home: Homescreen(),
+         home:SerachScreen(),
+         debugShowCheckedModeBanner: false,
         
       );
   }

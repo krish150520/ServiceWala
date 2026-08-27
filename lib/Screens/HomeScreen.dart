@@ -173,10 +173,7 @@ class _HomeScreenState extends State<Homescreen> {
               children: [
                 Text(
                   "Our Services",
-                  style: TextStyle(
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold,
-                  ),
+                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                 ),
                 Text(
                   "View All",
@@ -187,6 +184,29 @@ class _HomeScreenState extends State<Homescreen> {
                   ),
                 ),
               ],
+            ),
+
+            Expanded(
+              child: GridView.builder(
+                itemCount: 6,
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 3,
+                  crossAxisSpacing: 10,
+                  mainAxisSpacing: 15,
+                ),
+                itemBuilder: (context, index) {
+                  return Container(
+                    decoration: BoxDecoration(
+                      border: Border.all(),
+                      borderRadius: BorderRadius.circular(15),
+                      
+                    ),
+                    child:  ListTile(
+                      title: Text("Plumber", style: TextStyle( fontSize: 13),textAlign: TextAlign.center,),
+                    ),
+                  );
+                },
+              ),
             ),
           ],
         ),

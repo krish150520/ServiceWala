@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:servicewala/Screens/HomeScreen.dart';
-import 'Screens/SerachScreen.dart';
+import './Screens/MainScreen.dart';
 
 void main(){
   runApp(const ServiceWala());
@@ -12,7 +11,7 @@ class ServiceWala extends StatelessWidget{
   Widget build(BuildContext context) {
       return MaterialApp(
         title: "servicewalah",
-         home:SerachScreen(),
+         home:MainScreen(),
          debugShowCheckedModeBanner: false,
         
       );

@@ -1,5 +1,7 @@
 import "package:flutter/material.dart";
 import '../Theme/AppColors.dart';
+import '../widgets/Footer.dart';
+import 'SearchScreen.dart';
 
 class Homescreen extends StatefulWidget {
   const Homescreen({super.key});
@@ -34,8 +36,13 @@ class _HomeScreenState extends State<Homescreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        margin: EdgeInsets.only(top: 55, left: 25, right: 25),
+      body: SingleChildScrollView(
+        padding: const EdgeInsets.only(
+          top: 55,
+          left: 25,
+          right: 25,
+          bottom: 30,
+        ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -46,86 +53,85 @@ class _HomeScreenState extends State<Homescreen> {
                 Row(
                   children: [
                     Icon(Icons.map_outlined),
-                    Container(
-                      child: TextButton(
-                        onPressed: () => {
-                          showDialog(
-                            context: context,
-                            builder: (context) {
-                              return AlertDialog(
-                                constraints: const BoxConstraints(
-                                  minWidth: 500,
-                                  maxWidth: 520,
-                                ),
-                                title: const Text("Select Your City"),
-                                content: Column(
-                                  children: [
-                                    SearchBar(
-                                      hintText: "Search City",
-                                      elevation: WidgetStateProperty.all(0),
-                                      constraints: const BoxConstraints(
-                                        maxWidth: double.infinity,
-                                        maxHeight: 200,
-                                        minHeight: 40,
-                                      ),
-                                      backgroundColor:
-                                          const WidgetStatePropertyAll(
-                                            Colors.white,
-                                          ),
-                                    ),
-                                    Container(
-                                      margin: EdgeInsets.only(
-                                        top: 10,
-                                        bottom: 10,
-                                      ),
-                                      width: double.infinity,
-                                      child: ElevatedButton(
-                                        onPressed: () => print("yo"),
-                                        child: Text("Use Current Location"),
-                                      ),
-                                    ),
 
-                                    SizedBox(
-                                      width: double.infinity,
-                                      height: 550,
-                                      child: ScrollConfiguration(
-                                        behavior: ScrollConfiguration.of(
-                                          context,
-                                        ).copyWith(overscroll: false),
-                                        child: ListView.builder(
-                                          itemCount: cities.length,
-                                          itemBuilder: (context, index) {
-                                            return Column(
-                                              children: [
-                                                ListTile(
-                                                  title: Text(cities[index]),
-                                                  onTap: () => {
-                                                    setState(() {
-                                                      selectedValue =
-                                                          cities[index];
-                                                    }),
-                                                    Navigator.pop(context),
-                                                  },
-                                                ),
-                                                const Divider(
-                                                  height: 1,
-                                                  thickness: 1,
-                                                ),
-                                              ],
-                                            );
-                                          },
+                    TextButton(
+                      onPressed: () => {
+                        showDialog(
+                          context: context,
+                          builder: (context) {
+                            return AlertDialog(
+                              constraints: const BoxConstraints(
+                                minWidth: 500,
+                                maxWidth: 520,
+                              ),
+                              title: const Text("Select Your City"),
+                              content: Column(
+                                children: [
+                                  SearchBar(
+                                    hintText: "Search City",
+                                    elevation: WidgetStateProperty.all(0),
+                                    constraints: const BoxConstraints(
+                                      maxWidth: double.infinity,
+                                      maxHeight: 200,
+                                      minHeight: 40,
+                                    ),
+                                    backgroundColor:
+                                        const WidgetStatePropertyAll(
+                                          Colors.white,
                                         ),
+                                  ),
+                                  Container(
+                                    margin: EdgeInsets.only(
+                                      top: 10,
+                                      bottom: 10,
+                                    ),
+                                    width: double.infinity,
+                                    child: ElevatedButton(
+                                      onPressed: () => print("yo"),
+                                      child: Text("Use Current Location"),
+                                    ),
+                                  ),
+
+                                  SizedBox(
+                                    width: double.infinity,
+                                    height: 550,
+                                    child: ScrollConfiguration(
+                                      behavior: ScrollConfiguration.of(
+                                        context,
+                                      ).copyWith(overscroll: false),
+                                      child: ListView.builder(
+                                        itemCount: cities.length,
+                                        itemBuilder: (context, index) {
+                                          return Column(
+                                            children: [
+                                              ListTile(
+                                                title: Text(cities[index]),
+                                                onTap: () => {
+                                                  setState(() {
+                                                    selectedValue =
+                                                        cities[index];
+                                                  }),
+                                                  Navigator.pop(context),
+                                                },
+                                              ),
+                                              const Divider(
+                                                height: 1,
+                                                thickness: 1,
+                                              ),
+                                            ],
+                                          );
+                                        },
                                       ),
                                     ),
-                                  ],
-                                ),
-                              );
-                            },
-                          ),
-                        },
-                        style: ElevatedButton.styleFrom(elevation: 0),
-                        child: Text(selectedValue + " ,Punjab"),
-                      ),
+                                  ),
+                                ],
+                              ),
+                            );
+                          },
+                        ),
+                      },
+                      style: ElevatedButton.styleFrom(elevation: 0),
+                      child: Text(selectedValue + " ,Punjab"),
                     ),
                   ],
                 ),
@@ -168,6 +174,7 @@ class _HomeScreenState extends State<Homescreen> {
               child: SizedBox(width: double.infinity, height: 150),
             ),
             Padding(padding: EdgeInsets.only(top: 24)),
+
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -186,23 +193,112 @@ class _HomeScreenState extends State<Homescreen> {
               ],
             ),
 
-            Expanded(
-              child: GridView.builder(
-                itemCount: 6,
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 3,
-                  crossAxisSpacing: 10,
-                  mainAxisSpacing: 15,
+            const SizedBox(height: 20),
+            //-------------Services-Cards------------
+            GridView.builder(
+              itemCount: 6,
+              padding: EdgeInsets.zero,
+              physics: const NeverScrollableScrollPhysics(),
+              shrinkWrap: true,
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 3,
+                crossAxisSpacing: 10,
+                mainAxisSpacing: 15,
+                childAspectRatio: 1.2,
+              ),
+              itemBuilder: (context, index) {
+                return Container(
+                  decoration: BoxDecoration(
+                    border: Border.all(
+                      color: AppColors.borderColor,
+                      width: 1.2,
+                    ),
+
+                    borderRadius: BorderRadius.circular(15),
+                  ),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Container(
+                        margin: EdgeInsets.only(bottom: 12),
+                        child: Icon(Icons.bolt_sharp, color: Colors.red),
+                      ),
+
+                      Text(
+                        "Plumber",
+                        style: TextStyle(
+                          fontWeight: FontWeight(600),
+                          fontSize: 17,
+                        ),
+                      ),
+                    ],
+                  ),
+                );
+              },
+            ),
+
+            const SizedBox(height: 20),
+
+            //------------Top-Rated-Nearby--------------
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  "Top Rated Nearby",
+                  style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
                 ),
+                Text(
+                  "See All",
+                  style: TextStyle(
+                    color: AppColors.primary,
+                    fontSize: 17,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ],
+            ),
+
+            const SizedBox(height: 15),
+
+            SizedBox(
+              height: 80,
+              child: ListView.builder(
+                scrollDirection: Axis.horizontal,
+                itemCount: 4,
                 itemBuilder: (context, index) {
                   return Container(
+                    width: 200,
+                    margin: EdgeInsets.only(right: 15),
                     decoration: BoxDecoration(
-                      border: Border.all(),
-                      borderRadius: BorderRadius.circular(15),
-                      
+                      border: Border.all(
+                        color: AppColors.borderColor,
+                        width: 2,
+                      ),
+                      borderRadius: BorderRadius.circular(20),
                     ),
-                    child:  ListTile(
-                      title: Text("Plumber", style: TextStyle( fontSize: 13),textAlign: TextAlign.center,),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+
+                      children: [
+                        ClipRRect(
+                          borderRadius: BorderRadius.circular(50),
+                          child: Image.asset(
+                            'assets/images/spidey.jpg',
+                            height: 50,
+                            width: 50,
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                        SizedBox(
+                          width: 80,
+                          child: Text(
+                            "Ramesh Kummar",
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                        ),
+                        Icon(Icons.verified, color: AppColors.primary),
+                      ],
                     ),
                   );
                 },

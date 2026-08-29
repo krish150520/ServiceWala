@@ -1,41 +1,16 @@
 import "package:flutter/material.dart";
 
-// main screen which will hold both map and its controls
-class SearchScreen extends StatelessWidget {
-  const SearchScreen({super.key});
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Stack(children: [const MapHolder(), const Controls()]),
-    );
-  }
-}
-
-// all changes realted to maps will be maded in this class
-class MapHolder extends StatelessWidget {
-  const MapHolder({super.key});
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Image.asset(
-        'assets/images/spidey.jpg',
-        height: double.infinity,
-        width: double.infinity,
-        fit: BoxFit.cover,
-      ),
-    );
-  }
-}
-
-// all things releated to controls and buttons which will hover over map will be here
 class Controls extends StatelessWidget {
   const Controls({super.key});
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Container(
-        child: Padding(
-          padding: EdgeInsets.only(top: 10, left: 10, right: 10),
+    return  SafeArea(
+      child:Stack (
+        fit: StackFit.expand,
+        children:[ Positioned(
+         top: 10,
+         left: 10,
+         right: 10,
           child: SearchAnchor(
             builder: (context, controller) {
               return SearchBar(
@@ -59,7 +34,18 @@ class Controls extends StatelessWidget {
             },
           ),
         ),
+       Positioned(
+        right: 20,
+        bottom: 20,
+        child: FloatingActionButton(onPressed: ()=> print("fetching location of user"),
+       shape: CircleBorder(),
+       child: Icon(Icons.my_location),
+       
+       )
+       )
+        ],
       ),
+      
     );
   }
 }

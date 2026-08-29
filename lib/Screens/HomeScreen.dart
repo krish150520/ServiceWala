@@ -1,4 +1,5 @@
 import "package:flutter/material.dart";
+import 'package:servicewala/Screens/BookingScreen.dart';
 import '../Theme/AppColors.dart';
 import '../widgets/Footer.dart';
 import 'SearchScreen/SearchScreen.dart';
@@ -260,45 +261,52 @@ class _HomeScreenState extends State<Homescreen> {
 
             const SizedBox(height: 15),
 
+            //----------CARDS------------
             SizedBox(
               height: 80,
               child: ListView.builder(
                 scrollDirection: Axis.horizontal,
                 itemCount: 4,
                 itemBuilder: (context, index) {
-                  return Container(
-                    width: 200,
-                    margin: EdgeInsets.only(right: 15),
-                    decoration: BoxDecoration(
-                      border: Border.all(
-                        color: AppColors.borderColor,
-                        width: 2,
-                      ),
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  return GestureDetector(
+                    onTap: () {
+                      Navigator.push(context, MaterialPageRoute(builder: (context)=> const Bookingscreen()));
+                    },
+                    child: Container(
+                      width: 200,
 
-                      children: [
-                        ClipRRect(
-                          borderRadius: BorderRadius.circular(50),
-                          child: Image.asset(
-                            'assets/images/spidey.jpg',
-                            height: 50,
-                            width: 50,
-                            fit: BoxFit.cover,
-                          ),
+                      margin: EdgeInsets.only(right: 15),
+                      decoration: BoxDecoration(
+                        border: Border.all(
+                          color: AppColors.borderColor,
+                          width: 2,
                         ),
-                        SizedBox(
-                          width: 80,
-                          child: Text(
-                            "Ramesh Kummar",
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+
+                        children: [
+                          ClipRRect(
+                            borderRadius: BorderRadius.circular(50),
+                            child: Image.asset(
+                              'assets/images/spidey.jpg',
+                              height: 50,
+                              width: 50,
+                              fit: BoxFit.cover,
+                            ),
                           ),
-                        ),
-                        Icon(Icons.verified, color: AppColors.primary),
-                      ],
+                          SizedBox(
+                            width: 80,
+                            child: Text(
+                              "Ramesh Kummar",
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                          ),
+                          Icon(Icons.verified, color: AppColors.primary),
+                        ],
+                      ),
                     ),
                   );
                 },

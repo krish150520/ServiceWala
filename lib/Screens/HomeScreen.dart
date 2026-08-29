@@ -1,7 +1,7 @@
 import "package:flutter/material.dart";
 import '../Theme/AppColors.dart';
 import '../widgets/Footer.dart';
-import 'SearchScreen.dart';
+import 'SearchScreen/SearchScreen.dart';
 
 class Homescreen extends StatefulWidget {
   const Homescreen({super.key});

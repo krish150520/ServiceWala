@@ -2,6 +2,7 @@ import "package:flutter/material.dart";
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
 import 'widget/LocationPointer.dart';
+// used flutter map to add real map and latlong for cordinates and zoom
 class MapHolder extends StatelessWidget {
   const MapHolder({super.key});
   @override

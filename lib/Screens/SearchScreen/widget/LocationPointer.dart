@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+// main pointer widget which will be used to create pointer
 class UserMarker extends StatelessWidget {
   final String imagePath;
 
@@ -51,7 +51,7 @@ class UserMarker extends StatelessWidget {
     );
   }
 }
-
+// this is the class which creates coustom pointer because flutter does not have built in location pointer with images
 class MarkerPointerPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {

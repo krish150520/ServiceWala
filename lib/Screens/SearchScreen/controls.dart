@@ -2,9 +2,11 @@ import "package:flutter/material.dart";
 
 class Controls extends StatelessWidget {
   const Controls({super.key});
+  
   @override
   Widget build(BuildContext context) {
     return  SafeArea(
+      
       child:Stack (
         fit: StackFit.expand,
         children:[ Positioned(
@@ -17,8 +19,7 @@ class Controls extends StatelessWidget {
                 onTap: () {
                   controller.openView();
                 },
-                controller: controller,
-                // hintText: "hey search agents here",
+                controller:controller,                // hintText: "hey search agents here",
                 leading: const Icon(Icons.search),
               );
             },
@@ -34,6 +35,8 @@ class Controls extends StatelessWidget {
             },
           ),
         ),
+         // Temporary button to test bottom sheet
+         
        Positioned(
         right: 20,
         bottom: 20,

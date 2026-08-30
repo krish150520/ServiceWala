@@ -21,11 +21,18 @@ class BottomNavigationFooter extends StatelessWidget{
           icon: Icon(Icons.home_outlined),
           activeIcon: Icon(Icons.home),
           label: 'Home',
-        ),BottomNavigationBarItem(
+        ),
+         BottomNavigationBarItem(
+          icon: Icon(Icons.calendar_month_outlined),
+          activeIcon: Icon(Icons.calendar_month),
+          label: 'Booking',
+        ),
+        BottomNavigationBarItem(
           icon: Icon(Icons.search_outlined),
           activeIcon: Icon(Icons.search),
           label: 'Search',
         ),
+       
       ],
     );
   }

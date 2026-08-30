@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:servicewala/Screens/BookingScreen.dart';
 import '../widgets/Footer.dart';
 import 'HomeScreen.dart';
 import 'SearchScreen/SearchScreen.dart';
@@ -12,7 +13,7 @@ class MainScreen extends StatefulWidget {
 class _MainScreenState extends State<MainScreen> {
   int _currentIndex = 0;
 
-  final List<Widget> _screens = const [Homescreen(), SearchScreen()];
+  final List<Widget> _screens = const [Homescreen(), SearchScreen(),Bookingscreen()];
   @override
   Widget build(BuildContext context) {
     return Scaffold(

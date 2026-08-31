@@ -23,12 +23,16 @@ class StatItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        Icon(icon, size: 15,),
+        Icon(icon, size: 15),
         const SizedBox(width: 5),
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(value, style: const TextStyle(fontWeight: FontWeight.bold,) , textAlign: TextAlign.left,),
+            Text(
+              value,
+              style: const TextStyle(fontWeight: FontWeight.bold),
+              textAlign: TextAlign.left,
+            ),
             Text(label, style: const TextStyle(fontSize: 10)),
           ],
         ),
@@ -233,7 +237,9 @@ class _BookingscreenState extends State<Bookingscreen> {
               "About the Provider",
               style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
             ),
+            const SizedBox(height: 10),
 
+            //-------------About----------------
             Container(
               width: double.infinity,
               height: 150,
@@ -285,8 +291,314 @@ class _BookingscreenState extends State<Bookingscreen> {
                               value: "5+",
                               label: "Years Experience",
                             ),
-                            StatItem(icon: Icons.task, value: "120+", label: "Jobs Completed"),
+                            StatItem(
+                              icon: Icons.task,
+                              value: "120+",
+                              label: "Jobs Compled",
+                            ),
                           ],
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+
+            const SizedBox(height: 20),
+
+            Text(
+              "Preferred Date & Time",
+              style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+            ),
+
+            const SizedBox(height: 5),
+            //------------------Date&Time Selection-----------
+            SizedBox(
+              width: double.infinity,
+              height: 100,
+              child: Row(
+                spacing: 10,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  GestureDetector(
+                    onTap: () async {
+                      DateTime? selectedDate = await showDatePicker(
+                        context: context,
+                        firstDate: DateTime.now(),
+                        lastDate: DateTime.now().add(const Duration(days: 30)),
+                        initialDate: DateTime.now(),
+                      );
+
+                      if (selectedDate != null) {
+                        print(selectedDate);
+                      }
+                    },
+                    child: Container(
+                      padding: EdgeInsets.all(5),
+                      width: 175,
+                      height: 70,
+                      decoration: BoxDecoration(
+                        border: Border.all(
+                          width: 2,
+                          color: AppColors.borderColor,
+                        ),
+                        borderRadius: BorderRadius.circular(15),
+                      ),
+                      child: Row(
+                        spacing: 10,
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Container(
+                            width: 25,
+                            height: 25,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(20),
+                              color: const Color.fromARGB(75, 122, 195, 255),
+                            ),
+                            child: Icon(
+                              Icons.calendar_today,
+                              size: 16,
+                              color: AppColors.primary,
+                            ),
+                          ),
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                'Date',
+                                style: TextStyle(
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w400,
+                                ),
+                              ),
+                              Text(
+                                'Select Date',
+                                style: TextStyle(fontWeight: FontWeight(600)),
+                              ),
+                            ],
+                          ),
+                          Icon(Icons.keyboard_arrow_right),
+                        ],
+                      ),
+                    ),
+                  ),
+                  GestureDetector(
+                    onTap: () => showTimePicker(
+                      context: context,
+                      initialTime: TimeOfDay.now(),
+                    ),
+                    child: Container(
+                      padding: EdgeInsets.all(5),
+                      width: 175,
+                      height: 70,
+                      decoration: BoxDecoration(
+                        border: Border.all(
+                          width: 2,
+                          color: AppColors.borderColor,
+                        ),
+                        borderRadius: BorderRadius.circular(15),
+                      ),
+                      child: Row(
+                        spacing: 10,
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Icon(
+                            Icons.calendar_today,
+                            size: 16,
+                            color: AppColors.primary,
+                          ),
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                'Time',
+                                style: TextStyle(
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w400,
+                                ),
+                              ),
+                              Text(
+                                'Select Time',
+                                style: TextStyle(fontWeight: FontWeight(600)),
+                              ),
+                            ],
+                          ),
+                          Icon(Icons.keyboard_arrow_right),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+
+            const SizedBox(height: 20),
+
+            Text(
+              "Service Address",
+              style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+            ),
+
+            Container(
+              padding: EdgeInsets.all(12),
+              width: double.infinity,
+              height: 80,
+              decoration: BoxDecoration(
+                border: Border.all(width: 2, color: AppColors.borderColor),
+                borderRadius: BorderRadius.circular(15),
+              ),
+              child: Row(
+                spacing: 5,
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Icon(Icons.location_on_outlined),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        "Flat 402,Golden Crest,",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          color: const Color.fromARGB(255, 102, 102, 102),
+                        ),
+                      ),
+                      Text(
+                        "Amritsar,Punjab",
+                        style: TextStyle(
+                          color: const Color.fromARGB(255, 102, 102, 102),
+                        ),
+                      ),
+                    ],
+                  ),
+
+                  const Spacer(),
+
+                  Text("Change", style: TextStyle(color: AppColors.primary)),
+                  Icon(Icons.keyboard_arrow_right),
+                ],
+              ),
+            ),
+
+            const SizedBox(height: 20),
+
+            Row(
+              // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              spacing: 10,
+              children: [
+                Text(
+                  "Reviews",
+                  style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+                ),
+                Text(" (54)"),
+                const Spacer(),
+                Text(
+                  "See All",
+                  style: TextStyle(
+                    color: AppColors.primary,
+                    fontSize: 17,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ],
+            ),
+
+            const SizedBox(height: 5),
+
+            Container(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Container(
+                    padding: EdgeInsets.all(2),
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                        width: 2,
+                        color: AppColors.borderColor,
+                      ),
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                    width: 160,
+                    height: 100,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+
+                      children: [
+                        Text(
+                          "4.8 ",
+                          style: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          spacing: 2,
+                          children: [
+                            Icon(Icons.star, color: const Color.fromARGB(255, 255, 186, 59)),
+                            Icon(Icons.star, color: const Color.fromARGB(255, 255, 186, 59)),
+                            Icon(Icons.star, color: const Color.fromARGB(255, 255, 186, 59)),
+                            Icon(Icons.star, color: const Color.fromARGB(255, 255, 186, 59)),
+                            Icon(Icons.star, color: const Color.fromARGB(255, 255, 186, 59)),
+                          ],
+                        ),
+                        Text(
+                          "Based on 54 reviews",
+                          style: TextStyle(fontSize: 10),
+                        ),
+                      ],
+                    ),
+                  ),
+
+                  Container(
+                    width: 180,
+                    height: 100,
+                    padding: EdgeInsets.all(12),
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                        width: 2,
+                        color: AppColors.borderColor,
+                      ),
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                    child: Column(
+                      spacing: 10,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Row(
+                          spacing: 5,
+                          children: [
+                            ClipRRect(
+                              borderRadius: BorderRadius.circular(50),
+                              child: Image.asset(
+                                'assets/images/spidey.jpg',
+                                height: 25,
+                                width: 25,
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                            SizedBox(
+                              width: 100,
+                              child: Text(
+                                "AmanPreet Singh",
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
+                              ),
+                            ),
+                          ],
+                        ),
+                        SizedBox(
+                          height: 35,
+                          child: Text(
+                            "Very Good and nice polite service",
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                          ),
                         ),
                       ],
                     ),

@@ -8,7 +8,30 @@ class Mybookings extends StatefulWidget {
   State<Mybookings> createState() => _MybookingsState();
 }
 
+class AgentDetails{
+  final String name;
+  final String status;
+  final String service;
+
+
+  AgentDetails({
+    required this.name,
+    required this.status,
+    required this.service,
+  
+  });
+  
+}
 class _MybookingsState extends State<Mybookings> {
+
+
+  final List<AgentDetails>bookings = [
+    AgentDetails(name: "Ramesh", status: "Ongoing", service: "Electricion"),
+    AgentDetails(name: "Niharika", status: "Completed", service: "Plumber"),
+    AgentDetails(name: "CSK", status: "Completed", service: "Carpanter"),
+  ];
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -54,12 +77,10 @@ class _MybookingsState extends State<Mybookings> {
               width: double.infinity,
               height: 700,
               child: ListView.separated(
-                itemCount: 5,
+                itemCount: bookings.length,
                 scrollDirection: Axis.vertical,
                 itemBuilder: (context, index) {
-                  return Container(
-                    width: double.infinity,
-                    height: 200,
+                  return Expanded(
                     child: Column(
                       children: [
                         Row(
@@ -69,22 +90,22 @@ class _MybookingsState extends State<Mybookings> {
                               width: 80,
                               height: 23,
                               padding: EdgeInsets.all(2),
+                              margin: EdgeInsets.only(left: 10),
                               decoration: BoxDecoration(
-                                color: const Color.fromARGB(255, 177, 157, 229),
-                                borderRadius: BorderRadius.circular(8),
+                                color: bookings[index].status == "Completed" ?  Color.fromARGB(255, 104, 255, 162) : Color.fromARGB(255, 177, 157, 229),
+                                borderRadius: BorderRadius.only(topLeft: Radius.circular(15), topRight: Radius.circular(15)),
                               ),
                               child: Text(
-                                "UPCOMING",
+                                bookings[index].status,
                                 textAlign: TextAlign.center,
+                                style: TextStyle(fontSize: 12),
                               ),
                             ),
-                            Column(
-                              children: [Text("Booking Id:"), Text("#341037")],
-                            ),
+                          
+                              Text("Booking Id: #341037 "),
                           ],
                         ),
                         Container(
-                          height: 190,
                           decoration: BoxDecoration(
                             border: Border.all(
                               width: 2,
@@ -109,14 +130,14 @@ class _MybookingsState extends State<Mybookings> {
                                       ),
                                     ),
                                     Text(
-                                      "Plumber",
+                                      bookings[index].name,
                                       style: TextStyle(
                                         fontWeight: FontWeight(700),
                                         fontSize: 17,
                                       ),
                                     ),
                                     const Spacer(),
-                                    Text("Scheduled"),
+                                    Text(bookings[index].status),
                                     Icon(Icons.keyboard_arrow_right),
                                   ],
                                 ),
@@ -130,13 +151,36 @@ class _MybookingsState extends State<Mybookings> {
                               Row(
                                 children: [
                                   Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: [
-                                      Icon(Icons.calendar_view_week),
-                                      Text("24th May 2025, 11:45 AM")
+                                      Row(
+                                        children: [
+                                          const SizedBox(width: 10),
+                                          Icon(Icons.calendar_view_week),
+                                          Text("24th May 2025, 11:45 AM"),
+                                        ],
+                                      ),
+
+                                      Row(
+                                        children: [
+                                          const SizedBox(width: 10),
+                                          Icon(Icons.location_pin),
+                                          Text(
+                                            "Home | Ranjit Avenue, Amritsar",
+                                          ),
+                                        ],
+                                      ),
                                     ],
-                                  )
+                                  ),
+                                  const Spacer(),
+                                  OutlinedButton(
+                                    onPressed: () => print("yo"),
+                                    child: Text("call"),
+                                  ),
+                                  const SizedBox(width: 10),
                                 ],
-                              )
+                              ),
                             ],
                           ),
                         ),

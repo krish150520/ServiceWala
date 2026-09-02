@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:servicewala/Theme/AppColors.dart';
+import 'BookingStatus.dart';
 
 class Mybookings extends StatefulWidget {
   const Mybookings({super.key});
@@ -119,7 +120,10 @@ class BookingCard extends StatelessWidget {
   const BookingCard({super.key, required this.status, required this.name});
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return GestureDetector(
+      onTap: ()=>{
+        Navigator.push(context, MaterialPageRoute(builder: (context)=> const BookingStatus()))
+      },
       child: Column(
         children: [
           Row(

@@ -1,8 +1,8 @@
 import "package:flutter/material.dart";
-import 'package:servicewala/Screens/BookingScreen.dart';
+import 'package:servicewala/CxScreens/BookingScreen.dart';
 import '../Theme/AppColors.dart';
 import '../widgets/Footer.dart';
-import 'SearchScreen/SearchScreen.dart';
+import './SearchScreen/SearchScreen.dart';
 
 class Homescreen extends StatefulWidget {
   const Homescreen({super.key});

@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
+//------------Screens----------------
 import 'package:servicewala/CxScreens/BookingScreen.dart';
 import '../widgets/Footer.dart';
 import 'HomeScreen.dart';
 import 'SearchScreen/SearchScreen.dart';
 import 'MyBookings.dart';
-import 'package:supabase_flutter/supabase_flutter.dart';
+import '../ProviderScreens/Dashboard.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
@@ -35,7 +37,8 @@ class _MainScreenState extends State<MainScreen> {
   final List<Widget> _screens = const [
     Homescreen(),
     SearchScreen(),
-    Mybookings(),
+    Dashboard(),
+    // Mybookings(),
   ];
   @override
   Widget build(BuildContext context) {

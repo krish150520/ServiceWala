@@ -4,6 +4,8 @@ import '../widgets/Footer.dart';
 import 'HomeScreen.dart';
 import 'SearchScreen/SearchScreen.dart';
 import 'MyBookings.dart';
+import 'auth/loginscreen.dart';
+import 'auth/splash_screen.dart';
 
 
 class MainScreen extends StatefulWidget {
@@ -14,22 +16,49 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
-  int _currentIndex = 0;
+  // int _currentIndex = 0;
 
-  final List<Widget> _screens = const [Homescreen(), SearchScreen(),Mybookings()];
+  // final List<Widget> _screens = const [Homescreen(), SearchScreen(),Mybookings()];
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: _screens[_currentIndex],
-
-      bottomNavigationBar: BottomNavigationFooter(
-        currentIndex: _currentIndex,
-        onTap: (index) {
-          setState(() {
-            _currentIndex = index;
-          });
-        },
-      ),
-    );
+    return MaterialApp(
+  title: 'servicewala',
+  debugShowCheckedModeBanner: false,
+  home: ServiceWalaSplashScreen(
+    isAuthenticated: false,
+    onNavigateToHome: () {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (_) => const MainScreen()),
+      );
+    },
+    onNavigateToLogin: () {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (_) => const WelcomeBackScreen()),
+      );
+    },
+  ),
+);
+    
+    
+    
+    
+    
+    
+    
+    // Scaffold(
+    //   body: _screens[_currentIndex],
+    
+    //   bottomNavigationBar: BottomNavigationFooter(
+        
+    //     currentIndex: _currentIndex,
+    //     onTap: (index) {
+    //       setState(() {
+    //         _currentIndex = index;
+    //       });
+    //     },
+    //   ),
+    // );
   }
 }

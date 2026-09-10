@@ -32,6 +32,7 @@ class BottomNavigationFooter extends StatelessWidget{
           activeIcon: Icon(Icons.search),
           label: 'Search',
         ),
+        
        
       ],
     );

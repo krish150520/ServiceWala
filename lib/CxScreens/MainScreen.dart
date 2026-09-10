@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:servicewala/Screens/BookingScreen.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
+//------------Screens----------------
+import 'package:servicewala/CxScreens/BookingScreen.dart';
 import '../widgets/Footer.dart';
 import 'HomeScreen.dart';
 import 'SearchScreen/SearchScreen.dart';
 import 'MyBookings.dart';
-import 'auth/loginscreen.dart';
-import 'auth/splash_screen.dart';
-
+import '../ProviderScreens/Dashboard.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
@@ -16,9 +16,30 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
-  // int _currentIndex = 0;
+  int _currentIndex = 0;
+  final supabase = Supabase.instance.client;
 
-  // final List<Widget> _screens = const [Homescreen(), SearchScreen(),Mybookings()];
+  Future<void> fetchServices() async {
+    final response = await Supabase.instance.client
+        .from('services')
+        .select('id, name, description, icon')
+        .eq('is_active', true);
+
+    print(response);
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    fetchServices();
+  }
+
+  final List<Widget> _screens = const [
+    Homescreen(),
+    SearchScreen(),
+    Dashboard(),
+    // Mybookings(),
+  ];
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
